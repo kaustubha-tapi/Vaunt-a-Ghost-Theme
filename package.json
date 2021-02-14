@@ -1,0 +1,32 @@
+{
+  "name": "vaunt",
+  "version": "1.0.0",
+  "description": "A theme by Kaustubha Chaturvedi",
+  "engines": {
+    "ghost": ">=3.0.0",
+    "ghost-api": "v3"
+  },
+  "scripts": {
+    "dev": "postcss assets/css/style.css -o assets/css/tailwind.css"
+  },
+  "author": {
+    "name": "Kaustubha Chaturvedi",
+    "email": "kaustubhachaturvedi@gmail.com"
+  },
+  "keywords": [
+    "ghost",
+    "theme",
+    "ghost-theme"
+  ],
+  "config": {
+    "posts_per_page": 6
+  },
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "autoprefixer": "^10.2.4",
+    "postcss": "^8.2.6",
+    "postcss-cli": "^8.3.1",
+    "tailwindcss": "^2.0.3"
+  }
+}

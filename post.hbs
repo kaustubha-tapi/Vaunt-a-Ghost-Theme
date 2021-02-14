@@ -1,0 +1,142 @@
+<html>
+{{#post}}
+<head>
+    <link rel="stylesheet" href="{{asset "css/tailwind.min.css"}}">
+    <link rel="stylesheet" href="{{asset "css/line-awesome.min.css"}}">
+    <title>{{title}}</title>
+    <script>
+        if (localStorage.theme === 'dark') {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
+    {{ghost_head}}
+</head>
+<header class="lg:px-16 px-6 py-2 sticky top-0 bg-white dark:bg-black flex flex-wrap items-center lg:py-0">
+    <a href="/" class="py-3 md:text-3xl text-2xl text-green-500 dark:text-red-500">{{@site.title}}</a>
+  <div class="text-gray-800 md:text-2xl text-xl flex flex-1 justify-center dark:text-gray-100">
+    {{title}}
+  </div>
+  <label id="switchTheme" class="cursor-pointer text-gray-800 px-2 dark:text-gray-100">
+    <i id="swThemeIcon" class="las la-lg"></i>
+  </label>
+<script>
+  let themeIcon = document.getElementById('swThemeIcon').classList;
+  if (localStorage.theme === 'dark') {
+      themeIcon.remove('la-adjust');
+      themeIcon.add('la-sun');
+  } else {
+      themeIcon.remove('la-sun');
+      themeIcon.add('la-adjust');
+  }
+</script>
+</header>
+<body class="bg-gray-100 dark:bg-dark">
+    <section id="post-header" class="xl:px-96 lg:px-48 px-6 pt-2 md:pb-16 pb-8">
+        <div class="pt-5" id="tags">
+        {{#foreach tags}}
+            <a class="text-blue-500 text-lg" href="{{url}}">#{{slug}}</a>
+        {{/foreach}}
+        </div>
+        <div class="text-gray-800 border-b border-gray-400 dark:text-gray-200" id="title-description">
+            <p class="lg:text-5xl text-3xl pb-3 font-semibold">{{title}}</p>
+            {{#if custom_excerpt}}
+                <p class="lg:text-xl text-md pb-3 font-semibold text-gray-500">{{custom_excerpt}}</p>
+            {{/if}}
+        </div>
+        <div id="authors" class="py-4">
+            <div class="inline-flex space-x-1">
+                {{#foreach authors}}
+                {{#if profile_image}}
+                    <a href="{{url}}" class="rounded-full h-12 w-12 flex items-center justify-center bg-gray-300 dark:bg-gray-800">
+                        <img class="rounded-full" src="{{img_url profile_image size="xs"}}" alt="{{name}}" />
+                    </a>
+                {{else}}
+                    <a href="{{url}}" class="rounded-full h-12 w-12 flex items-center justify-center bg-gray-300 dark:bg-gray-800">
+                        <i class="las text-gray-800 dark:text-gray-300 la-user la-2x"></i>
+                    </a>
+                {{/if}}
+                {{/foreach}}
+                <div class="flex flex-col px-2">
+                    <h2 class="text-sm font-semibold text-gray-800 dark:text-gray-400">{{authors separator=" | "}}</h2>
+                    <div class="text-sm font-semibold text-gray-800 dark:text-gray-400">
+                        <time>{{date format="Do of MMM YYYY"}}</time>
+                        <span>&bull; {{reading_time}}</span>
+                    </div>
+                </div>
+            </div>  
+        </div>
+    </section>
+    <section class="flex flex-1 justify-center md:pb-16 pb-8" id="header-image">
+        {{#if feature_image}}
+            <img class="sm:rounded sm:w-5/6 w-full" src="{{img_url feature_image size="xl"}}" alt="{{title}}"/>
+        {{/if}}
+    </section>
+    <section class="text-gray-800 dark:text-gray-200 xl:px-96 lg:px-48 px-6 pt-2 md:pb-16 pb-8" id="content">
+        {{content}}
+    </section>
+    <section id="postFooter" class="bg-white dark:bg-black text-gray-800 dark:text-gray-200">
+        <div class="text-left from-gray-300 grid p-8 xl:mx-52 lg:mx-12 grid md:grid-cols-3 gap-8">
+            {{#if primary_tag}}
+                {{#get "posts" filter="tag:{{primary_tag.slug}}+id:-{{id}}" limit="5" as |related_posts|}}
+                <div class="text-left from-gray-300 dark:from-dark bg-gradient-to-b p-4 rounded">    
+                    {{#if related_posts}}
+                        {{#../primary_tag}}
+                            <p class="text-xs pb-8 text-gray-600 dark:text-gray-400">More in <a class="text-gray-800 dark:text-gray-200" href="{{url}}">{{name}}</a></p>
+                        {{/../primary_tag}}
+                        {{#foreach related_posts}}
+                            <a href="{{url}}" class="text-gray-600 py-4 dark:text-gray-400">{{title}}</a>
+                            <p class="text-gray-600 text-xs dark:text-gray-400">
+                                <time>{{date format="Do MMM YYYY"}}</time> – {{reading_time}}
+                            </p>
+                            <br>
+                        {{/foreach}}
+                    {{/if}}
+                {{/get}}
+                {{#get "posts" filter="tag:{{primary_tag.slug}}"}}
+                    <div class="pt-8">
+                        <a class="text-xs rounded-full border p-2 border-gray-800 text-gray-800 
+                                hover:border-yellow-600 hover:text-yellow-600 dark:border-gray-500 dark:text-gray-500
+                                dark:hover:border-yellow-400 dark:hover:text-yellow-400"
+                        href="{{#../primary_tag}}{{url}}{{/../primary_tag}}">
+                            {{plural meta.pagination.total empty='No post' singular='% post' plural='See all % posts'}}
+                            <i class="las la-arrow-right"></i>
+                        </a>
+                    </div>
+                {{/get}}
+                </div>
+                {{#next_post}}
+                    {{> "post-card"}}
+                {{/next_post}}
+                {{#prev_post}}
+                    {{> "post-card"}}
+                {{/prev_post}}
+            {{/if}}
+        </div>
+        <p class="text-center py-3 border-t border-gray-500 text-black dark:text-white">
+            <i class="las la-copyright"></i>
+            {{@site.title}} {{date format="YYYY"}}
+        </p>
+        <p class="text-center pb-3 text-xs text-gray-600 dark:text-gray-400">Powered By Vaunt</p>    
+    </section>
+<script>
+    document.getElementById('switchTheme').addEventListener('click',function() {
+        let htmlClasses = document.querySelector('html').classList;
+        let themeIcon = document.getElementById('swThemeIcon').classList;
+        if(localStorage.theme == 'dark'){
+            htmlClasses.remove('dark');
+            themeIcon.remove('la-sun');
+            themeIcon.add('la-adjust');
+            localStorage.removeItem('theme');
+        }else{
+            htmlClasses.add('dark');
+            themeIcon.remove('la-adjust');
+            themeIcon.add('la-sun');
+            localStorage.theme = 'dark';
+        }
+    });
+</script>
+</body>
+{{/post}}
+</html>

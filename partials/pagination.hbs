@@ -1,0 +1,28 @@
+<div class="md:px-4 py-3 flex items-center justify-between">
+
+  <div class="flex-1 flex items-center justify-between">
+      <p class="text-sm text-gray-700 dark:text-gray-200">
+        Page
+        <span class="font-medium">{{page}}</span>
+        of
+        <span class="font-medium">{{pages}}</span>
+      </p>
+    <div>
+      <nav class="inline-flex shadow-sm space-x-1">
+        {{#if prev}}
+        <a href="{{page_url prev}}" class="items-center px-2 py-2 border dark:border-white border-gray-900 text-sm font-medium hover:text-gray-50 hover:bg-gray-800 dark:text-gray-50 dark:hover:text-gray-800 dark:hover:bg-gray-50">
+          <i class="las la-angle-left"></i>
+          <span class="">Newer Posts</span>
+        </a>
+        {{/if}}
+
+        {{#if next}}
+        <a href="{{page_url next}}" class="items-center px-2 py-2 border dark:border-white border-gray-900 text-sm font-medium hover:text-gray-50 hover:bg-gray-800 dark:text-gray-50 dark:hover:text-gray-800 dark:hover:bg-gray-50">
+          <span class="">Older Posts</span>
+          <i class="las la-angle-right"></i>
+        </a>
+        {{/if}}
+      </nav>
+    </div>
+  </div>
+</div>

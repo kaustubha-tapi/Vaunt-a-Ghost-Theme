@@ -1,0 +1,29 @@
+<header class="lg:px-16 px-6 sticky top-0 bg-white dark:bg-black flex flex-wrap items-center lg:py-0 py-2">
+  <div class="flex-1 flex justify-between items-center px-2">
+    <a href="/" class="text-3xl text-green-500 dark:text-red-500">{{@site.title}}</a>
+  </div>
+  <label id="switchTheme" class="cursor-pointer text-gray-800 px-2 dark:text-gray-100">
+    <i id="swThemeIcon" class="las la-lg"></i>
+  </label>
+  <label for="menu-toggle" class="cursor-pointer text-gray-800 dark:text-gray-100 lg:hidden block">
+    <i class="las la-lg la-bars"></i>
+  </label>
+  <input class="hidden" type="checkbox" id="menu-toggle" />
+  <div class="hidden lg:flex lg:items-center lg:w-auto w-full" id="menu">
+    <nav>
+      {{#if @site.navigation}}
+          {{navigation}}
+      {{/if}}
+    </nav>
+  </div>
+</header>
+<script>
+  let themeIcon = document.getElementById('swThemeIcon').classList;
+  if (localStorage.theme === 'dark') {
+      themeIcon.remove('la-adjust');
+      themeIcon.add('la-sun');
+  } else {
+      themeIcon.remove('la-sun');
+      themeIcon.add('la-adjust');
+  }
+</script>

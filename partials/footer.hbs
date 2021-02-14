@@ -1,0 +1,32 @@
+<footer class="text-gray-400 bg-white dark:bg-black body-font">
+  <div class="container px-12 pt-8 pb-10 mx-auto flex flex-wrap justify-start gap-8">
+    {{!-- TAGS --}}
+    <div class="text-left xl:w-1/4 lg:w-1/3 md:w-1/2 w-full from-gray-300 dark:from-dark bg-gradient-to-b p-4 rounded">    
+      <h2 class="title-font font-medium text-black dark:text-white tracking-widest text-sm mb-3">Explore</h2>
+      {{#get "tags" limit="9" as |tag|}}
+      <ul class="list-none mb-10">
+        {{#foreach tag}}
+        <li>
+          <a href="{{url}}" class="dark:text-gray-400 font-semibold  dark:hover:text-white text-gray-600 hover:text-black">#{{slug}}</a>
+        </li>
+        {{/foreach}}
+      </ul>
+      {{/get}}
+    </div>
+    {{!-- Recent POSTS --}}
+    <div class="text-left xl:w-1/4 lg:w-1/3 md:w-1/2 w-full from-gray-300 dark:from-dark bg-gradient-to-b p-4 rounded">
+        <h2 class="title-font font-medium text-black dark:text-white tracking-widest text-sm mb-3">Recent Posts</h2>
+        {{#get "posts" limit="7" as |recent|}}
+        <ul class="list-none mb-10">
+          {{#foreach recent}}
+          <li>
+            <a class="dark:text-gray-400 font-semibold dark:hover:text-white text-gray-600 hover:text-black" href="{{url}}">{{title}}</a>
+          </li>
+          {{/foreach}}
+        </ul>
+        {{/get}}
+    </div>
+  </div>
+  <p class="text-center border-t border-gray-500 py-3 text-black dark:text-white"><i class="las la-copyright"></i> {{@site.title}} {{date format="YYYY"}}</p>
+  <p class="text-center pb-3 text-xs text-gray-600 dark:text-gray-400">Powered By Vaunt</p>
+</footer>

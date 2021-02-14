@@ -1,0 +1,9 @@
+<ul class="lg:flex items-center justify-between text-base text-gray-800 dark:text-gray-100 pt-4 lg:pt-0">
+    {{#foreach navigation}}
+    <li>
+        <a class="lg:p-4 py-3 px-0 block lg:border-b-2 hover:text-blue-400 dark:hover:text-green-400 {{#if current}} border-red-400 {{else}} border-transparent {{/if}} hover:border-blue-400 dark:hover:border-green-400" href="{{url absolute="true"}}">
+            {{label}}
+        </a>
+    </li>
+    {{/foreach}}
+</ul>

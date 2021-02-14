@@ -1,0 +1,47 @@
+<section class="xl:px-32 px-4 text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-dark body-font">
+  <div class="container px-5 py-24 border-t border-gray-500 mx-auto">
+    <div class="flex flex-wrap -m-4 grid lg:grid-cols-3 p-4 gap-8">
+    {{#foreach posts}}
+        <div class="h-full rounded overflow-hidden">
+        {{#if feature_image}}
+          <img class="h-48 w-full rounded object-cover object-center" src="{{feature_image}}" alt="{{title}}">
+        {{/if}}
+          <div class="p-6">
+            <p class="text-blue-500 uppercase">{{tags.[0].name}}</p>
+            <a href="{{url}}" class="title-font text-xl font-semibold text-black dark:text-white mb-3">{{title}}</a>
+            <a href="{{url}}">
+            <p class="leading-relaxed mb-3">
+              <i class="las la-2x text-green-500 dark:text-red-500 la-quote-left"></i>
+              {{#if meta_description}}{{meta_description}}{{else}}{{excerpt words="22"}}{{/if}}
+              <i class="las la-lg text-red-500 dark:text-green-500 la-quote-right"></i>
+            </p>
+            </a>
+            <div id="authors" class="border-t border-gray-500 py-4">
+              <div class="inline-flex space-x-1">
+                  {{#foreach authors limit="2"}}
+                  {{#if profile_image}}
+                      <a href="{{url}}" class="rounded-full h-12 w-12 flex items-center justify-center bg-gray-300 dark:bg-gray-800">
+                          <img class="rounded-full" src="{{img_url profile_image size="xs"}}" alt="{{name}}" />
+                      </a>
+                  {{else}}
+                      <a href="{{url}}" class="rounded-full h-12 w-12 flex items-center justify-center bg-gray-300 dark:bg-gray-800">
+                          <i class="las text-gray-800 dark:text-gray-300 la-user la-2x"></i>
+                      </a>
+                  {{/if}}
+                  {{/foreach}}
+                  <div class="flex flex-col px-2">
+                      <h2 class="text-sm font-semibold text-gray-800 dark:text-gray-400">{{#has author="count:>2"}}Multiple authors{{else}}{{authors separator=" | " limit="2"}}{{/has}}</h2>
+                      <div class="text-sm font-semibold text-gray-800 dark:text-gray-400">
+                          <time>{{date format="Do MMM YYYY"}}</time>
+                          <span>&bull; {{reading_time}}</span>
+                      </div>
+                  </div>
+              </div>  
+            </div>
+          </div>
+        </div>
+    {{/foreach}}
+    </div>
+      {{pagination}}
+  </div>
+</section>

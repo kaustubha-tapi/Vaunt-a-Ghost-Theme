@@ -1,0 +1,24 @@
+<div class="h-full rounded overflow-hidden">
+    {{#if feature_image}}
+        <img class="h-48 w-full rounded object-cover object-center" src="{{feature_image}}" alt="{{title}}">
+    {{/if}}
+    <div class="p-6">
+        <p class="text-blue-500 uppercase">{{tags.[0].name}}</p>
+        <a href="{{url}}" class="title-font text-xl font-semibold text-black dark:text-white mb-3">{{title}}</a>
+        <a href="{{url}}" class="flex flex-col">
+            <p class="leading-relaxed mb-3">
+            <i class="las la-2x text-green-500 dark:text-red-500 la-quote-left"></i>
+                {{#if meta_description}}{{meta_description}}{{else}}{{excerpt words="22"}}{{/if}}
+            <i class="las la-lg text-red-500 dark:text-green-500 la-quote-right"></i>
+            </p>
+        </a>
+        <div class="border-t border-gray-500 py-4">
+            <div class="flex flex-col px-2">
+                <div class="text-sm font-semibold text-gray-800 dark:text-gray-400">
+                    <time>{{date format="Do MMM YYYY"}}</time>
+                    <span>&bull; {{reading_time}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

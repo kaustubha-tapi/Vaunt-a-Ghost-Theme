@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{asset "css/tailwind.min.css"}}">
+    <link rel="stylesheet" href="{{asset "css/line-awesome.min.css"}}">
+    <script>
+        if (localStorage.theme === 'dark') {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
+    <style>
+        #menu-toggle:checked + #menu {
+            display: block;
+        }
+    </style>
+    <title>{{meta_title}}</title>
+    {{ghost_head}}
+</head>
+{{> header}}
+<body class="bg-gray-100 dark:bg-dark">
+    {{!-- Body --}}
+    {{body}}
+    <section class="lg:px-36 pt-12 px-8 pb-4 text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-dark">
+    {{#tag}}
+        <h1 class="text-5xl text-gray-800 pb-4 dark:text-gray-100 capitalize">{{name}}</h1>
+        <p class="text-2xl text-gray-500 dark:text-gray-400">
+            A collection of {{plural ../pagination.total empty='posts' singular='% post' plural='% posts'}}
+        </p>
+    {{/tag}}
+    </section>
+    {{!-- Footer --}}
+    {{> postGrid}}
+    {{> footer}}
+    {{ghost_foot}}
+
+    <script>
+        document.getElementById('switchTheme').addEventListener('click',function() {
+            let htmlClasses = document.querySelector('html').classList;
+            let themeIcon = document.getElementById('swThemeIcon').classList;
+            if(localStorage.theme == 'dark'){
+                htmlClasses.remove('dark');
+                themeIcon.remove('la-sun');
+                themeIcon.add('la-adjust');
+                localStorage.removeItem('theme');
+            }else{
+                htmlClasses.add('dark');
+                themeIcon.remove('la-adjust');
+                themeIcon.add('la-sun');
+                localStorage.theme = 'dark';
+            }
+        });
+    </script>
+</body>
+</html>
