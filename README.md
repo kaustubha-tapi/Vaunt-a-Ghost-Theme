@@ -21,3 +21,6 @@ Vaunt is a simple Tailwind CSS ghost CMS theme.
 6. Activate Theme.
 
 #### And Done You Have Successfully installed Vaunt.
+
+## Upcoming Change
+- [x] will be adding gallery image popup
