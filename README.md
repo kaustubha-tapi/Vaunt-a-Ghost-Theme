@@ -1,6 +1,6 @@
 ﻿# Vaunt
 
-## For Preview [Click Here](https://vaunt-kaustubha.herokuapp.com),can be slow since it is being hosted on heroku free plan. 
+## For Preview [CLICK HERE](https://vaunt-kaustubha.herokuapp.com),can be slow since it is being hosted on heroku free plan. 
 ### A Ghost CMS Theme
 
 ### Now Optimized For Production
