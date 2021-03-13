@@ -7,7 +7,7 @@
     "ghost-api": "v3"
   },
   "scripts": {
-    "dev": "postcss assets/css/style.css -o assets/css/tailwind.css"
+    "dev": "postcss assets/css/style.css -o assets/css/tailwind.min.css"
   },
   "author": {
     "name": "Kaustubha Chaturvedi",
@@ -19,7 +19,7 @@
     "ghost-theme"
   ],
   "config": {
-    "posts_per_page": 6
+    "posts_per_page": 9
   },
   "license": "ISC",
   "dependencies": {},
