@@ -19,7 +19,7 @@
     "ghost-theme"
   ],
   "config": {
-    "posts_per_page": 6
+    "posts_per_page": 9
   },
   "license": "ISC",
   "dependencies": {},
