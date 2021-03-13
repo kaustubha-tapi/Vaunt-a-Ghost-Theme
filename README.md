@@ -8,6 +8,6 @@
 Vaunt is a simple Tailwind CSS ghost CMS theme.
 
 ### What's new in this build
--[x] Added Defalut Responsive Gallery Function
--[x] moved build from devlopement to production
--[x] Added [demo](vaunt-kaustubha.herokuapp.com) link 
+- [x] Added Defalut Responsive Gallery Function
+- [x] moved build from devlopement to production
+- [x] Added [demo](vaunt-kaustubha.herokuapp.com) link 
