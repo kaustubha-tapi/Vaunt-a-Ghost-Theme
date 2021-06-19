@@ -5,7 +5,9 @@
       <p class="mb-8 text-xl">{{@site.description}}</p>
     </div>
     <div class="md:w-1/2 w-full">
+      {{#if @site.cover_image}}
       <img class="object-cover rounded-lg" alt="hero" src="{{@site.cover_image}}">
+      {{/if}}
     </div>
   </div>
 </section>
