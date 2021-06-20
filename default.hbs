@@ -37,11 +37,11 @@
             if(localStorage.theme == 'dark'){
                 htmlClasses.remove('dark');
                 themeIcon.remove('la-sun');
-                themeIcon.add('la-adjust');
+                themeIcon.add('la-moon');
                 localStorage.removeItem('theme');
             }else{
                 htmlClasses.add('dark');
-                themeIcon.remove('la-adjust');
+                themeIcon.remove('la-moon');
                 themeIcon.add('la-sun');
                 localStorage.theme = 'dark';
             }
